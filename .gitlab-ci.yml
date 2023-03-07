@@ -1,3 +1,5 @@
+image: hashicorp/terraform:0.12.29
+
 stages:
   - build
   - plan
@@ -6,6 +8,7 @@ stages:
 variables:
   TF_VAR_aws_access_key: $AWS_ACCESS_KEY
   TF_VAR_aws_secret_key: $AWS_SECRET_KEY
+
 
 build:
   stage: build
