@@ -8,40 +8,7 @@ terraform {
 }
 
 # Define variables
-variable "bucket_name" {
-  type        = string
-  description = "Name of the S3 bucket"
-  default     = "resized-images-staging"
-}
-variable "enviroment" {
-  type        = string
-  description = "Name of the Lambda function"
-  default     = "staging"
-}
 
-variable "function_name" {
-  type        = string
-  description = "Name of the Lambda function"
-  default     = "lambda-image-resizer-staging"
-}
-
-variable "api_name" {
-  type        = string
-  description = "Name of the Lambda function"
-  default     = "resized-images"
-}
-variable "region" {
-  type        = string
-  description = "Name of the Lambda function"
-  default     = "us-east-1"
-}
-
-
-variable "resize-prefix" {
-  type        = string
-  description = "Name of the Lambda function"
-  default     = "resize"
-}
 
 
 # Provider configuration
@@ -99,9 +66,7 @@ resource "aws_iam_role" "lambda" {
   })
 }
 
-output "name" {
-  value = data.aws_s3_bucket.skult-cards.id
-}
+
 
 # # IAM policy for S3 access
 resource "aws_iam_policy" "s3_policy" {
@@ -288,20 +253,4 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
       },
     },
   ])
-}
-
-
-
-# # Output the API Gateway endpoint URL
-output "api_url" {
-  value = aws_api_gateway_deployment.api_deployment.invoke_url
-}
-
-variable "test_variable" {
-  default = "test"
-
-}
-
-output "s3_url" {
-  value = "http://${aws_s3_bucket.bucket.website_endpoint}"
 }
