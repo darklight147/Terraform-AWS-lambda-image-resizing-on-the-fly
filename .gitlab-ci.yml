@@ -22,8 +22,8 @@ build:
   
   only:
     - main
-  tags:
-    - terraform
+  # tags:
+  #   - terraform
   artifacts:
     paths:
       - lambda-resizer/.aws-sam/build
