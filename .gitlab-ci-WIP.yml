@@ -1,0 +1,64 @@
+image: hashicorp/terraform:0.12.29
+
+stages:
+  - build
+  - plan
+  - deploy
+
+variables:
+  TF_VAR_aws_access_key: $AWS_ACCESS_KEY
+  TF_VAR_aws_secret_key: $AWS_SECRET_KEY
+
+default:
+  before_script:
+    - terraform -v
+
+
+build:
+  stage: build
+  script: |
+    #!/bin/bash
+    set -e
+    # install sam cli
+    yum install -y nodejs
+    npm install -g aws-sam-cli
+    # build
+    cd lambda-resizer
+    sam build
+  
+  only:
+    - main
+  # tags:
+  #   - terraform
+  artifacts:
+    paths:
+      - lambda-resizer/.aws-sam/build
+
+
+plan:
+  stage: plan
+  script:
+    - terraform init
+    - terraform plan 
+  only:
+    - main
+  tags:
+    - terraform
+  artifacts:
+    paths:
+      - lambda-resizer/.aws-sam/build
+
+
+deploy:
+  stage: deploy
+  script:
+    - terraform init
+    - terraform plan
+    - terraform apply -auto-approve
+  only:
+    - main
+  environment:
+    name: production
+  when: manual
+  tags:
+    - terraform
