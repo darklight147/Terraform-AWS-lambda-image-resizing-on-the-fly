@@ -38,3 +38,13 @@ variable "profile" {
   description = "Name of the AWS profile"
   default     = "default"
 }
+
+variable "cdn_url" {
+  type        = string
+  description = "Name of the CDN url, like https://cdn.example.com with no trailing slash"
+}
+
+variable "source_bucket" {
+  type        = string
+  description = "Name of the source bucket where the original images are stored"
+}

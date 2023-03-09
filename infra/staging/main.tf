@@ -33,8 +33,8 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
-data "aws_s3_bucket" "skult-cards" {
-  bucket = "skult-cards"
+data "aws_s3_bucket" "source-bucket" {
+  bucket = var.source_bucket
 
   provider = aws.eu-west-3
 }
@@ -103,8 +103,8 @@ resource "aws_iam_policy" "s3_policy" {
         Effect : "Allow",
         Action : "s3:GetObject",
         Resource = [
-          data.aws_s3_bucket.skult-cards.arn,
-          "${data.aws_s3_bucket.skult-cards.arn}/*",
+          data.aws_s3_bucket.source-bucket.arn,
+          "${data.aws_s3_bucket.source-bucket.arn}/*",
         ]
       }
     ],
@@ -159,10 +159,10 @@ resource "aws_lambda_function" "function" {
 
   environment {
     variables = {
-      BUCKET_NAME        = data.aws_s3_bucket.skult-cards.id
+      BUCKET_NAME        = data.aws_s3_bucket.source-bucket.id
       TARGET_BUCKET_NAME = aws_s3_bucket.bucket.id
       ALLOWED_DIMENSIONS = "100x100,200x200,300x300,400x400,500x500,600x600,700x700,800x800,900x900,1000x1000,150x150"
-      CDN_URL            = "https://cdn.skult.gg"
+      CDN_URL            = var.cdn_url
     }
   }
 }
