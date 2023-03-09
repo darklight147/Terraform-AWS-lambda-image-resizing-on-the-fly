@@ -17,7 +17,7 @@ Before you can deploy this project, you need to have the following prerequisites
 To get started with this project, clone the repository and navigate to the root directory of the project.
 
 ```sh
-git clone https://github.com/darklight147/Terraform-AWS-lambda-image-resizing-on-the-fly.gi terraform-image-resize
+git clone https://github.com/darklight147/Terraform-AWS-lambda-image-resizing-on-the-fly.git terraform-image-resize
 
 
 cd terraform-image-resize
