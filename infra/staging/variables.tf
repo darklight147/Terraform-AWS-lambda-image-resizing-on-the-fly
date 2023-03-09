@@ -32,3 +32,9 @@ variable "resize-prefix" {
   description = "Name of the resized image prefix"
   default     = "resize"
 }
+
+variable "profile" {
+  type        = string
+  description = "Name of the AWS profile"
+  default     = "default"
+}

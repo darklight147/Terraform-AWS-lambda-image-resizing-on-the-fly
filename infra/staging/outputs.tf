@@ -17,7 +17,7 @@ variable "test_variable" {
 }
 
 output "s3_url" {
-  value = "http://${aws_s3_bucket.bucket.website_endpoint}"
+  value = "http://${aws_s3_bucket_website_configuration.bucket.website_endpoint}"
 
   depends_on = [
     aws_s3_bucket.bucket

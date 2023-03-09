@@ -14,13 +14,13 @@ terraform {
 # Provider configuration
 provider "aws" {
   region  = "us-east-1"
-  profile = "skult"
+  profile = var.profile
 }
 
 provider "aws" {
   alias   = "eu-west-3"
   region  = "eu-west-3"
-  profile = "skult"
+  profile = var.profile
 }
 
 resource "aws_s3_bucket" "bucket" {
