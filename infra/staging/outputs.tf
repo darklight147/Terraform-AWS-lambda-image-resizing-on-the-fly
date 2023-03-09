@@ -1,6 +1,6 @@
 
 output "name" {
-  value = data.aws_s3_bucket.skult-cards.id
+  value = data.aws_s3_bucket.source-bucket.id
 }
 
 output "target-bucket" {
