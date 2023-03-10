@@ -27,7 +27,7 @@ variable "region" {
 }
 
 
-variable "resize-prefix" {
+variable "resize_prefix" {
   type        = string
   description = "Name of the resized image prefix"
   default     = "resize"

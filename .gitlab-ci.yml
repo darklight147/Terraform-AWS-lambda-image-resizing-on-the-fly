@@ -14,7 +14,7 @@ variables:
   TF_VAR_function_name: $FUNCTION_NAME
   TF_VAR_api_name: $API_NAME
   TF_VAR_region: $REGION
-  TF_VAR_resize-prefix: $RESIZE_PREFIX
+  TF_VAR_resize_prefix: $RESIZE_PREFIX
   TF_VAR_profile: $PROFILE
   TF_VAR_cdn_url: $CDN_URL
   TF_VAR_source_bucket: $SOURCE_BUCKET

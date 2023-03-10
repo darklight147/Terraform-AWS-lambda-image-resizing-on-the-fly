@@ -185,7 +185,7 @@ resource "aws_api_gateway_rest_api" "api" {
 resource "aws_api_gateway_resource" "api_resource" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   parent_id   = aws_api_gateway_rest_api.api.root_resource_id
-  path_part   = var.resize-prefix
+  path_part   = var.resize_prefix
 }
 
 resource "aws_api_gateway_resource" "api_resource2" {
@@ -251,7 +251,7 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
         HttpErrorCodeReturnedEquals : "404",
       },
       Redirect : {
-        ReplaceKeyPrefixWith : "${var.enviroment}/${var.resize-prefix}/r?key=",
+        ReplaceKeyPrefixWith : "${var.enviroment}/${var.resize_prefix}/r?key=",
         HttpRedirectCode : "307",
         HostName : element(split("/", split("//", aws_api_gateway_deployment.api_deployment.invoke_url)[1]), 0),
         Protocol : "https",
