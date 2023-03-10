@@ -20,7 +20,8 @@ variables:
   TF_VAR_source_bucket: $SOURCE_BUCKET
 
 
-before_script:
+.install-dependencies:
+  before_script:
   stage: [build]
   script: |
     #!/usr/bin/env bash
