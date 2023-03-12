@@ -81,3 +81,5 @@ PS: you can fill in your custom variables by creating a `terraform.tfvars` at `.
 ```sh
 ./destroy.sh
 ```
+
+## Contribution Guide
