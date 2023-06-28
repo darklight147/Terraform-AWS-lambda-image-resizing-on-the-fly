@@ -9,7 +9,7 @@
   "dependencies": {
     "@types/sharp": "^0.31.1",
     "aws-sdk": "^2.1328.0",
-    "esbuild": "^0.17.11"
+    "esbuild": "^0.17.19"
   },
   "scripts": {
     "unit": "jest",
